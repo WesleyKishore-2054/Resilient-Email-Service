@@ -95,6 +95,49 @@ npm test
 
 ---
 
-## Deployment
+## Deployment (Render)
 
-For local testing only. Cloud deployment (AWS, Render, Vercel, etc.) can be done later if required.
+This project is deployed using **Render**, a cloud platform for hosting web services.
+
+### Setup Instructions for Deployment:
+
+1. **Push Code to GitHub**
+   - Make sure your project is committed and pushed to a GitHub repository.
+
+2. **Sign Up / Log In to Render**
+   - Visit [https://render.com](https://render.com) and sign in using GitHub.
+
+3. **Create a New Web Service**
+   - Click on **New +** → **Web Service**.
+   - Connect your GitHub repository.
+   - Choose the correct repository containing this project.
+
+4. **Configure Service**
+   - **Name**: Resilient-Email-Service
+   - **Branch**: main
+   - **Runtime Environment**: Node
+   - **Root Directory**: (leave blank unless your project is inside a subfolder)
+   - **Build Command**:
+     ```
+     npm install
+     ```
+   - **Start Command**:
+     ```
+     node src/index.js
+     ```
+
+5. **Free Plan Selection**
+   - Choose the **Free** instance type if you're testing or demonstrating.
+
+6. **Deploy**
+   - Click **Create Web Service** to trigger the build and deploy process.
+   - Once deployed, Render will show a public URL like:
+     ```
+     https://resilient-email-service-xxxxx.onrender.com
+     ```
+
+### Note:
+
+- Ensure `PORT` is dynamically picked in `index.js`:
+  ```js
+  const PORT = process.env.PORT || 3000;
