@@ -26,7 +26,7 @@ app.get('/status/:emailId', (req, res) => {
         res.status(404).json({ message: 'Email status not found' });
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`📨 Email service running at http://localhost:${PORT}`);
 });
